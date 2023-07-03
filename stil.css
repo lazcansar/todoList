@@ -37,3 +37,9 @@ body {
 .todo-form .form-control:focus {
     box-shadow: none;
 }
+.todo-form .form-select {
+    border-radius: 5px;
+}
+.todo-form .form-select:focus {
+    box-shadow: none;
+}
