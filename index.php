@@ -78,7 +78,7 @@ if(isset($_POST['taskAdd'])) {
                 <td class="text-black-50"><del>'.$title.'</del></td>
                 <td class="text-black-50"><del>'.$status.'</del></td>
                 <td class="text-black-50"><del>'.$date.'</del></td>
-                <td class="text-center"><form action="./inc/update.php" method="post"><input type="hidden" value="'.$id.'" name="taskId"><input type="hidden" value="check" name="check"><button type="submit" class="btn btn-sm btn-success" name="check"><i class="bi bi-check2-circle"></i> Checked</button></form></td>
+                <td class="text-center"><form action="./inc/update.php" method="post"><input type="hidden" value="'.$id.'" name="taskId"><input type="hidden" value="empty" name="check"><button type="submit" class="btn btn-sm btn-success" name="check"><i class="bi bi-check2-circle"></i> Checked</button></form></td>
                 <td class="text-center"><a class="text-danger" href="./inc/delete.php?taskId='.$id.'"><i class="bi bi-x-lg"></i></a></td>
                 </tr>
               ';
