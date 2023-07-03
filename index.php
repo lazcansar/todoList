@@ -52,7 +52,7 @@ if(isset($_POST['taskAdd'])) {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Job Title</th>
-            <th scope="col">Derege</th>
+            <th scope="col">Importance Level</th>
             <th scope="col">Complete Date</th>
             <th class="text-center" scope="col">Complete</th>
             <th class="text-center" scope="col">Delete</th>
@@ -71,9 +71,18 @@ if(isset($_POST['taskAdd'])) {
               $status = $listTask['taskImportant'];
               $date = $listTask['taskCompleteDate'];
               $type = $listTask['taskType'];
+              if($status == "Urgent") {
+                $color = 'class="bg-warning"';
+                $colorClass = "bg-warning";
+                $dangerIcon = '<i class="bi bi-exclamation-octagon-fill"></i> ';
+              }else {
+                $color = '';
+                $colorClass = '';
+                $dangerIcon = '';
+              }
               if($type == "checked") {
                 echo '
-                <tr">
+                <tr>
                 <th class="text-black-50" scope="row"><del>'.$x.'</del></th>
                 <td class="text-black-50"><del>'.$title.'</del></td>
                 <td class="text-black-50"><del>'.$status.'</del></td>
@@ -84,13 +93,13 @@ if(isset($_POST['taskAdd'])) {
               ';
               }else {
               echo '
-                <tr>
-                <th scope="row">'.$x.'</th>
-                <td>'.$title.'</td>
-                <td>'.$status.'</td>
-                <td>'.$date.'</td>
-                <td class="text-center"><form action="./inc/update.php" method="post"><input type="hidden" value="'.$id.'" name="taskId"><input type="hidden" value="checked" name="check"><button type="submit" class="btn btn-sm btn-primary" name="checked">Check</button></form></td>
-                <td class="text-center"><a class="text-danger" href="./inc/delete.php?taskId='.$id.'"><i class="bi bi-x-lg"></i></a></td>
+                <tr">
+                <th '.$color.' scope="row">'.$x.'</th>
+                <td '.$color.'>'.$title.'</td>
+                <td '.$color.'>'.$dangerIcon.$status.'</td>
+                <td '.$color.'>'.$date.'</td>
+                <td class="text-center '.$colorClass.'"><form action="./inc/update.php" method="post"><input type="hidden" value="'.$id.'" name="taskId"><input type="hidden" value="checked" name="check"><button type="submit" class="btn btn-sm btn-primary" name="checked">Check</button></form></td>
+                <td class="text-center '.$colorClass.'"><a class="text-danger" href="./inc/delete.php?taskId='.$id.'"><i class="bi bi-x-lg"></i></a></td>
                 </tr>
               ';
             }
