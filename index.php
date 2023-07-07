@@ -47,7 +47,7 @@ if(isset($_POST['taskAdd'])) {
           </form>
         </div>
 <span id="sonuc"></span>
-        <table class="table mt-5">
+        <table class="table table-hover mt-5">
           <thead>
           <tr>
             <th scope="col">#</th>
@@ -108,11 +108,16 @@ if(isset($_POST['taskAdd'])) {
             ?>
           </tbody>
         </table>
+            <?php 
+            $stmt = $db->prepare("SELECT * FROM task WHERE taskType LIKE '%checked%' ");
+            $stmt->execute();
+            $countCheck = $stmt->get_result();
+            $checkSub = mysqli_num_rows($countCheck);
+            ?>
 
-
-        <p class="text-center text-capitalize text-info border-5 border-top border-bottom pt-4 pb-4 mt-5">Total : <?php echo $countList; ?> </p>
+        <p class="text-center text-capitalize text-info border-5 border-top border-bottom pt-4 pb-4 mt-5"><span class="text-warning">Checked : <?php echo $checkSub; ?> </span> <span class="text-black-50">-</span> Total : <?php echo $countList; ?> </p>
       </div>
-    </section>
+    </section> 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
